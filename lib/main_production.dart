@@ -13,7 +13,7 @@ void main() {
       values: FlavorValues(baseUrl: StaticConstant.baseUrlProduction));
   runZoned<Future<Null>>(
     () async {
-      runApp(MyApp());
+      mainInit();
     },
   );
 }

@@ -12,6 +12,6 @@ void main() {
       color: Colors.deepPurpleAccent,
       values: FlavorValues(baseUrl: StaticConstant.baseUrlStaging));
   runZoned<Future<Null>>(() async {
-    runApp(MyApp());
+    mainInit();
   });
 }
