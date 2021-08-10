@@ -21,3 +21,5 @@ flutter pub run easy_localization:generate -S "assets/translations" -O "lib/tran
 
 
 #how to update package name android#
+
+flutter pub run change_app_package_name:main com.new.package.name
