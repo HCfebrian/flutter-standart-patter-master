@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_flutter/core/constant/static_constant.dart';
 import 'package:simple_flutter/feature/splash_screen/presentation/splash_screen.dart';
 import 'package:simple_flutter/injection_container.dart';
@@ -13,7 +14,12 @@ Future<void> mainInit() async {
       supportedLocales: [Locale('en')],
       path: 'assets/translations',
       fallbackLocale: Locale('en'),
-      child: MainApp(),
+      child: ScreenUtilInit(
+        designSize: Size(375, 812),
+        builder: () {
+          return MainApp();
+        },
+      ),
     ),
   );
 }
