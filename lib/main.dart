@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_flutter/core/constant/static_constant.dart';
 import 'package:simple_flutter/feature/splash_screen/presentation/splash_screen.dart';
 import 'package:simple_flutter/injection_container.dart';
+import 'package:simple_flutter/translations/codegen_loader.g.dart';
 
 Future<void> mainInit() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,6 +13,7 @@ Future<void> mainInit() async {
   runApp(
     EasyLocalization(
       supportedLocales: [Locale('en')],
+      assetLoader: CodegenLoader(),
       path: 'assets/translations',
       fallbackLocale: Locale('en'),
       child: ScreenUtilInit(
