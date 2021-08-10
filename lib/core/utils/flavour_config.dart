@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simple_flutter/utils/string_utils.dart';
+import 'package:simple_flutter/core/utils/string_utils.dart';
 
 enum Flavor { DEVELOP, STAGING, PRODUCTION }
 
