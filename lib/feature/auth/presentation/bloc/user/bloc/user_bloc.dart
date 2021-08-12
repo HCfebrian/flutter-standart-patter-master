@@ -22,7 +22,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       sharedPreferences.setString("addToken", "");
       yield UserLoggedOutState();
     }
-    if(event is UserLoggedInEvent){
+    if (event is UserLoggedInEvent) {
       yield UserLoadingState();
       yield UserLoggedInState();
     }
