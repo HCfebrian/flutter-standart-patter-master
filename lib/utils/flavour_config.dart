@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:simple_flutter/utils/string_utils.dart';
 
-enum Flavor { DEVELOP, STAGING, PRODUCTION }
+enum Flavor { develop, staging, production }
 
 class FlavorValues {
   FlavorValues({required this.baseUrl});
@@ -16,10 +16,11 @@ class FlavorConfig {
   final FlavorValues values;
   static FlavorConfig? _instance;
 
-  factory FlavorConfig(
-      {required Flavor flavor,
-      Color color: Colors.blue,
-      required FlavorValues values}) {
+  factory FlavorConfig({
+    required Flavor flavor,
+    required FlavorValues values,
+    Color color = Colors.blue,
+  }) {
     _instance ??= FlavorConfig._internal(
       flavor,
       StringUtils.enumName(flavor.toString()),
@@ -35,9 +36,9 @@ class FlavorConfig {
     return _instance!;
   }
 
-  static bool isProduction() => _instance!.flavor == Flavor.PRODUCTION;
+  static bool isProduction() => _instance!.flavor == Flavor.production;
 
-  static bool isStaging() => _instance!.flavor == Flavor.STAGING;
+  static bool isStaging() => _instance!.flavor == Flavor.staging;
 
-  static bool isDevelop() => _instance!.flavor == Flavor.DEVELOP;
+  static bool isDevelop() => _instance!.flavor == Flavor.develop;
 }

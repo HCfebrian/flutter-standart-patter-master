@@ -7,11 +7,11 @@ import 'package:simple_flutter/utils/flavour_config.dart';
 
 void main() {
   FlavorConfig(
-      flavor: Flavor.DEVELOP, //Flavor Type
-      color: Colors.deepPurpleAccent, //F// lavor color
-      values: FlavorValues(
-          baseUrl: StaticConstant.baseUrlDev)); // Add Flavor base Url
-  runZoned<Future<Null>>(() async {
+    flavor: Flavor.develop, //Flavor Type
+    color: Colors.deepPurpleAccent, //F// lavor color
+    values: FlavorValues(baseUrl: StaticConstant.baseUrlDev),
+  ); // Add Flavor base Url
+  runZoned<Future<void>>(() async {
     mainInit();
   });
 }
