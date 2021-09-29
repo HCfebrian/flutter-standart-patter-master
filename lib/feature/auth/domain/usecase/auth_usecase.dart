@@ -3,19 +3,19 @@ import 'package:simple_flutter/feature/auth/domain/contract_repo/auth_repo_abs.d
 class AuthUsecase {
   final AuthRepoAbs authRepo;
 
-  AuthUsecase({required this.authRepo});
+  AuthUsecase({required final this.authRepo});
 
-  Future registerUser({
-    required String email,
-    required String password,
-    String? username,
+  Future<bool> registerUser({
+    required final String email,
+    required final String password,
+    final String? username,
   }) {
     return authRepo.registerUser(email: email, password: password);
   }
 
   Future loginUser({
-    required String email,
-    required String password,
+    required final String email,
+    required final String password,
   }) {
     return authRepo.loginUser(email: email, password: password);
   }

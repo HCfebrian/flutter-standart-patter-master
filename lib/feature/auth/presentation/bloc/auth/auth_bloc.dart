@@ -17,7 +17,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   @override
   Stream<AuthState> mapEventToState(
-    AuthEvent event,
+    final AuthEvent event,
   ) async* {
     if (event is AuthLoginEvent) {
       yield AuthLoadingState();
@@ -38,7 +38,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
       try {
         if (event.password != event.rePassword) {
-          throw Exception("password confirmation failed");
+          throw Exception('password confirmation failed');
         }
         authUsecase.registerUser(
           email: event.email,

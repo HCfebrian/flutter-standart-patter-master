@@ -11,7 +11,7 @@ class AuthLoginEvent extends AuthEvent {
   final String email;
   final String password;
 
-  AuthLoginEvent({
+  const AuthLoginEvent({
     required this.email,
     required this.password,
   });
@@ -28,7 +28,7 @@ class AuthRegisterEvent extends AuthEvent {
   final String password;
   final String rePassword;
 
-  AuthRegisterEvent({
+  const AuthRegisterEvent({
     required this.email,
     required this.password,
     required this.rePassword,

@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:simple_flutter/translations/locale_keys.g.dart';
 
 class SplashScreen extends StatefulWidget {
-  SplashScreen({Key? key, required this.title}) : super(key: key);
+  const SplashScreen({
+    required this.title,
+    final Key? key,
+  }) : super(key: key);
 
   final String title;
 
@@ -21,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -31,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              LocaleKeys.hello_world.tr(),
+              LocaleKeys.helloWorld.tr(),
             ),
             Text(
               '$_counter',
@@ -43,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

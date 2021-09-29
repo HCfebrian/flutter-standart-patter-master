@@ -15,11 +15,11 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
   @override
   Stream<UserState> mapEventToState(
-    UserEvent event,
+    final UserEvent event,
   ) async* {
     if (event is UserLoggedOutEvent) {
       yield UserLoadingState();
-      sharedPreferences.setString("addToken", "");
+      sharedPreferences.setString('addToken', '');
       yield UserLoggedOutState();
     }
     if (event is UserLoggedInEvent) {

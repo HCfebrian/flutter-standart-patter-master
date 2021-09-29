@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_flutter/core/constant/static_constant.dart';
 import 'package:simple_flutter/feature/splash_screen/presentation/splash_screen.dart';
@@ -12,12 +12,12 @@ Future<void> mainInit() async {
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
-      supportedLocales: [Locale('en')],
-      assetLoader: CodegenLoader(),
+      supportedLocales: const <Locale>[Locale('en')],
+      assetLoader: const CodegenLoader(),
       path: 'assets/translations',
-      fallbackLocale: Locale('en'),
+      fallbackLocale: const Locale('en'),
       child: ScreenUtilInit(
-        designSize: Size(375, 812),
+        designSize: const Size(375, 812),
         builder: () {
           return MainApp();
         },
@@ -28,7 +28,7 @@ Future<void> mainInit() async {
 
 class MainApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return MaterialApp(
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
@@ -38,7 +38,7 @@ class MainApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SplashScreen(title: 'Flutter Demo Home Page'),
+      home: const SplashScreen(title: 'Flutter Demo Home Page'),
     );
   }
 }

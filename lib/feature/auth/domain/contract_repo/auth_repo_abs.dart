@@ -1,13 +1,13 @@
 abstract class AuthRepoAbs {
-  Future registerUser({
-    required String email,
-    required String password,
-    String? username,
+  Future<bool> registerUser({
+    required final String email,
+    required final String password,
+    final String? username,
   });
 
   Future loginUser({
-    required String email,
-    required String password,
-    String? username,
+    required final String email,
+    required final String password,
+    final String? username,
   });
 }
