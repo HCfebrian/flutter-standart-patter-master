@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:simple_flutter/feature/auth/presentation/bloc/user/bloc/user_bloc.dart';
+import 'package:simple_flutter/feature/auth/presentation/bloc/user/user_bloc.dart';
 import 'package:simple_flutter/injection_container.dart';
 
 Dio addInterceptors({required Dio dio}) {

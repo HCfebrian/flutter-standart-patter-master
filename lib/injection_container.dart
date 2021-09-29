@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_flutter/core/utils/flavour_config.dart';
 import 'package:simple_flutter/feature/auth/domain/usecase/auth_usecase.dart';
-import 'package:simple_flutter/feature/auth/presentation/bloc/user/bloc/user_bloc.dart';
+import 'package:simple_flutter/feature/auth/presentation/bloc/user/user_bloc.dart';
 
 final getIt = GetIt.instance;
 
