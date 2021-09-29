@@ -5,7 +5,7 @@ import 'package:simple_flutter/translations/locale_keys.g.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({
     required this.title,
-    final Key? key,
+    Key? key,
   }) : super(key: key);
 
   final String title;
@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),

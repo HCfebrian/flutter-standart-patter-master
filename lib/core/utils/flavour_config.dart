@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:simple_flutter/core/utils/string_utils.dart';
+import 'package:simple_flutter/utils/string_utils.dart';
 
 enum Flavor { develop, staging, production }
 
 class FlavorValues {
-  FlavorValues({required final this.baseUrl});
+  FlavorValues({required this.baseUrl});
 
   final String baseUrl;
 }
@@ -17,9 +17,9 @@ class FlavorConfig {
   static FlavorConfig? _instance;
 
   factory FlavorConfig({
-    required final Flavor flavor,
-    required final FlavorValues values,
-    final Color color = Colors.blue,
+    required Flavor flavor,
+    required FlavorValues values,
+    Color color = Colors.blue,
   }) {
     _instance ??= FlavorConfig._internal(
       flavor,
