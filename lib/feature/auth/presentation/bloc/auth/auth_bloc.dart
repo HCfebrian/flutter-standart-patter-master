@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:simple_flutter/feature/auth/domain/usecase/auth_usecase.dart';
@@ -11,45 +9,29 @@ part 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthUsecase authUsecase;
 
-  AuthBloc({
-    required this.authUsecase,
-  }) : super(AuthInitial());
+  AuthBloc({required this.authUsecase}) : super(AuthInitial()) {
+    on<AuthLoginEvent>(
+      (event, emit) {
+        authUsecase.loginUser(email: event.email, password: event.password);
+      },
+    );
 
-  @override
-  Stream<AuthState> mapEventToState(
-    final AuthEvent event,
-  ) async* {
-    if (event is AuthLoginEvent) {
-      yield AuthLoadingState();
-      try {
-        authUsecase.registerUser(
+    on<AuthRegisterEvent>((event, emit) async {
+      emit(AuthLoadingState());
+      if (event.password == event.rePassword) {
+        await authUsecase.registerUser(
           email: event.email,
           password: event.password,
         );
-        yield AuthSuccessState();
-      } catch (e) {
-        yield AuthErrorState(
-          message: e.toString(),
-        );
+        emit(AuthSuccessState());
+      } else {
+        emit(const AuthErrorState(message: 'Password did not match'));
       }
-    }
-    if (event is AuthRegisterEvent) {
-      yield AuthLoadingState();
+    });
 
-      try {
-        if (event.password != event.rePassword) {
-          throw Exception('password confirmation failed');
-        }
-        authUsecase.registerUser(
-          email: event.email,
-          password: event.password,
-        );
-        yield AuthSuccessState();
-      } catch (e) {
-        yield AuthErrorState(
-          message: e.toString(),
-        );
-      }
-    }
+    on<AuthCancelRequestEvent>((event, emit) {
+      emit(AuthInitial());
+      authUsecase.cancelRequest();
+    });
   }
 }

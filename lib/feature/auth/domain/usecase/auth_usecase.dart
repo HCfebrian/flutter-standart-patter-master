@@ -29,6 +29,10 @@ class AuthUsecase {
     return localPrefUsecase.saveAuthToken(token: token);
   }
 
+  Future logout(){
+    return localPrefUsecase.deleteAuthToken();
+  }
+
   Future cancelRequest() {
     return authRepo.cancelRequest();
   }

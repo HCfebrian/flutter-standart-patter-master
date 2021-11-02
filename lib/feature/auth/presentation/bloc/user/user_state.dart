@@ -16,4 +16,11 @@ class UserLoadingState extends UserState {}
 
 class UserLoggedOutState extends UserState {}
 
-class UserLoggedInState extends UserState {}
+class UserLoggedInState extends UserState {
+  final UserEntity userEntity;
+
+  const UserLoggedInState({required this.userEntity});
+
+  @override
+  List<Object?> get props => [userEntity];
+}

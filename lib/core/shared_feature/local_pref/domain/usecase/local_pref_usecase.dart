@@ -16,4 +16,11 @@ class LocalPrefUsecase {
   Future<String?> getAuthToken() async {
     return localPrefAbs.getString(key: StaticConstant.keyAuthToken);
   }
+
+  Future deleteAuthToken() {
+    return localPrefAbs.setString(
+      key: StaticConstant.keyAuthToken,
+      value: '',
+    );
+  }
 }

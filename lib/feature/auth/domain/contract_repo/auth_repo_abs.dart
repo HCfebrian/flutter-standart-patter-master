@@ -12,4 +12,5 @@ abstract class AuthRepoAbs {
   });
 
   Future cancelRequest();
+
 }
