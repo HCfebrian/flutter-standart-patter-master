@@ -32,7 +32,7 @@ dynamic requestInterceptor(
     log('request ${options.uri}');
     if (options.headers.containsKey(StaticConstant.addKey)) {
       log('requires token active');
-      options.headers.remove('addToken');
+      options.headers.remove(StaticConstant.addKey);
       final String? token = await prefs.getAuthToken();
       options.headers['Authorization'] = 'Bearer $token';
       return handler.next(options);
