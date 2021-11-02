@@ -28,4 +28,8 @@ class AuthUsecase {
     final token = await authRepo.loginUser(email: email, password: password);
     return localPrefUsecase.saveAuthToken(token: token);
   }
+
+  Future cancelRequest() {
+    return authRepo.cancelRequest();
+  }
 }
