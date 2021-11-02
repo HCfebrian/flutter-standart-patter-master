@@ -5,4 +5,6 @@ class StaticConstant {
   static String baseUrlProduction = 'https://www.googleapis.com/';
 
   static String keyAuthToken = 'keyAuthToken';
+
+  static String addKey = 'addKey';
 }

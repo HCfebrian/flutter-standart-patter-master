@@ -13,7 +13,7 @@ class LocalPrefUsecase {
     );
   }
 
-  Future getAuthToken() {
+  Future<String?> getAuthToken() async {
     return localPrefAbs.getString(key: StaticConstant.keyAuthToken);
   }
 }

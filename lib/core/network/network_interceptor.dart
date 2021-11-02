@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:simple_flutter/feature/auth/presentation/bloc/user/user_bloc.dart';
+import 'package:simple_flutter/core/constant/static_constant.dart';
+import 'package:simple_flutter/core/shared_feature/local_pref/domain/usecase/local_pref_usecase.dart';
 import 'package:simple_flutter/get_it.dart';
 
 Dio addInterceptors({required final Dio dio}) {
@@ -15,7 +15,6 @@ Dio addInterceptors({required final Dio dio}) {
           final RequestInterceptorHandler handler,
         ) async =>
             requestInterceptor(options, handler),
-        // onResponse: (Response response) => responseInterceptor(response),
         onError:
             (final DioError dioError, final ErrorInterceptorHandler handler) =>
                 errorInterceptor(dioError, handler),
@@ -28,13 +27,13 @@ dynamic requestInterceptor(
   final RequestInterceptorHandler handler,
 ) async {
   {
+    final LocalPrefUsecase prefs = getIt();
     log('requestInterceptor active');
     log('request ${options.uri}');
-    if (options.headers.containsKey('addToken')) {
+    if (options.headers.containsKey(StaticConstant.addKey)) {
       log('requires token active');
       options.headers.remove('addToken');
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-      final String token = prefs.getString('addToken') ?? '';
+      final String? token = await prefs.getAuthToken();
       options.headers['Authorization'] = 'Bearer $token';
       return handler.next(options);
     }
@@ -46,17 +45,7 @@ dynamic errorInterceptor(
   final DioError dioError,
   final ErrorInterceptorHandler handler,
 ) async {
-  final UserBloc userBloc = getIt();
-
   log('Uri : ${dioError.requestOptions.uri}');
-  if (dioError.response != null) {
-    if (dioError.response!.data['error']['message'] == 'Token is expired') {
-      final SharedPreferences sharedPreferences = getIt();
-      sharedPreferences.setString('addToken', '');
-      userBloc.add(UserLoggedOutEvent());
-    }
-    log('error interceptor ${dioError.response!.data}');
-    return handler.next(dioError);
-  }
+  log(' error interceptor message ${dioError.message} stack ${dioError.stackTrace}');
   return handler.next(dioError);
 }
