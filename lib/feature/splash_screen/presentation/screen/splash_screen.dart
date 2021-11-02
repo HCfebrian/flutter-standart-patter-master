@@ -24,21 +24,12 @@ class _SplashScreenState extends State<SplashScreen> {
     return BlocListener<SplashScreenBloc, SplashScreenState>(
       listener: (context, state) {
         if (state is SplashSuccessState) {
-          Navigator.pushNamed(context, AppRoute.home);
+          Navigator.pushReplacementNamed(context, AppRoute.home);
         }
       },
       child: Scaffold(
         body: Center(
-          child: GestureDetector(
-            child: Image.asset('assets/image/logo.png'),
-            onTap: () {
-              Navigator.pushNamed(
-                context,
-                AppRoute.home,
-                arguments: AppRoute.home,
-              );
-            },
-          ),
+          child: Image.asset('assets/image/logo.png'),
         ),
       ),
     );
