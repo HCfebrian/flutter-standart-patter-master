@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_flutter/feature/auth/presentation/bloc/user/user_bloc.dart';
-import 'package:simple_flutter/injection_container.dart';
+import 'package:simple_flutter/get_it.dart';
 
 Dio addInterceptors({required final Dio dio}) {
   log('interceptor initialized dio not null');
