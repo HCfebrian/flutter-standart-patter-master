@@ -1,5 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:simple_flutter/core/shared_feature/local_pref/data/repo/shared_pref_impl.dart';
+import 'package:simple_flutter/core/shared_feature/local_pref/domain/contract_repo/local_pref_abs.dart';
 import 'package:simple_flutter/feature/splash_screen/domain/usecase/splash_usecase.dart';
 import 'package:simple_flutter/feature/splash_screen/presentation/bloc/splashscreen_bloc.dart';
 
@@ -16,8 +18,11 @@ void initDepInject() {
 
   // repo
 
-  // getIt.registerLazySingleton<BannerRepoAbs>(
-  //     () => BannerRepoImpl(bannerRemote: getIt()));
+  getIt.registerLazySingleton<LocalPrefAbs>(
+    () => SharedPrefImpl(
+      sharedPref: getIt(),
+    ),
+  );
 
   //data
 
