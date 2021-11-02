@@ -3,4 +3,6 @@ class StaticConstant {
   static String baseUrlDev = 'https://www.googleapis.com/';
   static String baseUrlStaging = 'https://www.googleapis.com/';
   static String baseUrlProduction = 'https://www.googleapis.com/';
+
+  static String keyAuthToken = 'keyAuthToken';
 }

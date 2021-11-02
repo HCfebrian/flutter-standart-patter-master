@@ -1,3 +1,4 @@
+import 'package:simple_flutter/core/constant/static_constant.dart';
 import 'package:simple_flutter/core/shared_feature/local_pref/domain/contract_repo/local_pref_abs.dart';
 
 class LocalPrefUsecase {
@@ -5,5 +6,14 @@ class LocalPrefUsecase {
 
   LocalPrefUsecase({required this.localPrefAbs});
 
+  Future saveAuthToken({required String token}) async {
+    return localPrefAbs.setString(
+      key: StaticConstant.keyAuthToken,
+      value: token,
+    );
+  }
 
+  Future getAuthToken() {
+    return localPrefAbs.getString(key: StaticConstant.keyAuthToken);
+  }
 }

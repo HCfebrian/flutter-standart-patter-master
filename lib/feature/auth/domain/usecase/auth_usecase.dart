@@ -1,22 +1,31 @@
+import 'package:simple_flutter/core/shared_feature/local_pref/domain/usecase/local_pref_usecase.dart';
 import 'package:simple_flutter/feature/auth/domain/contract_repo/auth_repo_abs.dart';
 
 class AuthUsecase {
   final AuthRepoAbs authRepo;
+  final LocalPrefUsecase localPrefUsecase;
 
-  AuthUsecase({required final this.authRepo});
+  AuthUsecase({
+    required this.authRepo,
+    required this.localPrefUsecase,
+  });
 
-  Future<bool> registerUser({
+  Future registerUser({
     required final String email,
     required final String password,
     final String? username,
-  }) {
-    return authRepo.registerUser(email: email, password: password);
+  }) async {
+    final String token =
+        await authRepo.registerUser(email: email, password: password);
+
+    return localPrefUsecase.saveAuthToken(token: token);
   }
 
   Future loginUser({
     required final String email,
     required final String password,
-  }) {
-    return authRepo.loginUser(email: email, password: password);
+  }) async {
+    final token = await authRepo.loginUser(email: email, password: password);
+    return localPrefUsecase.saveAuthToken(token: token);
   }
 }
